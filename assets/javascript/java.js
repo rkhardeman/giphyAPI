@@ -4,7 +4,7 @@ var apiKey = "&api_key=dc6zaTOxFJmzC";
 
 // search query to be called by ajax function
 var queryURL = 
-	"https://api.giphy.com/v1/gifs/search?q=" + subjects + apiKey;
+	"https://api.giphy.com/v1/gifs/search?q=" + "wonder woman gadot" + limit + apiKey;
 
 //this function creates the buttons when called
 function displayButtons() {
@@ -23,11 +23,24 @@ $.ajax({
 	method: 'GET'
 }).done(function(response){
 	console.log(response);
-    var gifURL = response.data.image_url;
-    var gif = $("<img>").attr("src", gifURL);
-    $(".gifContainer").html(gif);
 
-})
+	var results = response.data;
+
+    for (var i = 0; i < results.length; i++){
+    	var gifDiv = $("<div class='gif'>");
+
+    	var gifImage = $("<img>");
+    	gifImage.attr("src", results[i].images.fixed_height.url);
+    	
+    	gifDiv.prepend(gifImage);
+
+    	$(".gifContainer").prepend(gifDiv);
+
+    };
+    // var gif = $("<img>").attr("src", gifURL);
+    // $(".gifContainer").html(gif);
+
+});
 
 
 //on document ready call the displayButtons function to create subject buttons
