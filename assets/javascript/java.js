@@ -1,4 +1,4 @@
-var subjects =["Deadpool", "Thor", "Wonder Woman (Gadot)"],s;
+var subjects =["Goku", "Vegeta", "Gohan"],s;
 var limit = "&limit=10";
 var apiKey = "&api_key=dc6zaTOxFJmzC";
 
@@ -39,10 +39,9 @@ function displayButtons() {
 		    	gifImage.attr("data-state", "still");
 		    	
 		    	gifDiv.prepend(gifImage);
-
 		  	  	$(".gifContainer").prepend(gifDiv);
 
-		  	  	$(".gifClick").on("click", function(){
+		  	  	gifImage.on("click", function(){
 				      
 				      var state = $(this).attr("data-state");
 
